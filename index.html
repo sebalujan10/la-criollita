@@ -12,45 +12,39 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">
-      <img class="logo" src="logo.png" alt="">
-    </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link " aria-current="page" href="#">Inicio</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#pagina2">Pisos Flotantes Vinilos</a>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Pisos Flotantes Melanimicos</a>
-        </li>  
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Pulido y Plastificado</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Pulido e Hidrolaqueado</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Pisos de Mardera Prefinished</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">¿Quiénes somos?</Q></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" aria-disabled="true">Contacto</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
+  
  <section id="main1">
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#"><img src="logo.png" alt="" class="logo"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contactos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">¿Quienes Somos?</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Pisos
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
     <div class="container">
         <div class="box box1">Para visitas a nuestro local coordinar previamente al whatapp 11-7054-2342</div>
         <div class="box box2">Ver formas de pago con tarjetas Visa y Mastercard</div>
@@ -123,12 +117,56 @@
   </section>
     
 <script>
-  document.querySelectorAll("div.item").forEach((item, index) => {
+const carousel = document.querySelector("main#carousel");
+const items = document.querySelectorAll("div.item");
+let isDragging = false; // Para saber si el usuario está arrastrando
+let startX = 0; // Para almacenar la posición inicial del ratón
+let currentPosition = 0; // Para calcular la nueva posición
+
+// Función para actualizar la posición del carrusel
+function updatePosition(newIndex) {
+  newIndex = Math.max(0, Math.min(newIndex, items.length - 1)); // Limitar la posición dentro del rango de items
+  carousel.style.setProperty("--position", newIndex + 1);
+}
+
+// Evento para el clic en los elementos
+items.forEach((item, index) => {
   item.addEventListener("click", () => {
-    // Cambiar la posición central
-    document.querySelector("main#carousel").style.setProperty("--position", index + 1);
+    updatePosition(index);
   });
 });
+
+// Función para manejar el inicio del arrastre
+carousel.addEventListener("mousedown", (event) => {
+  isDragging = true;
+  startX = event.clientX; // Guardamos la posición inicial del ratón
+  carousel.style.cursor = 'grabbing'; // Cambiamos el cursor cuando se empieza a arrastrar
+});
+
+// Función para manejar el movimiento del ratón durante el arrastre
+carousel.addEventListener("mousemove", (event) => {
+  if (!isDragging) return; // Si no estamos arrastrando, no hacer nada
+
+  const distance = event.clientX - startX; // Calculamos la distancia recorrida
+  const itemsWidth = items[0].offsetWidth; // Ancho de un item del carrusel
+
+  // Calculamos cuántos ítems hemos arrastrado
+  currentPosition = Math.floor(distance / itemsWidth);
+  updatePosition(currentPosition);
+});
+
+// Función para manejar el final del arrastre
+carousel.addEventListener("mouseup", () => {
+  isDragging = false;
+  carousel.style.cursor = 'grab'; // Volver a cambiar el cursor
+});
+
+// También, por si el mouse se sale del área sin soltar
+carousel.addEventListener("mouseleave", () => {
+  isDragging = false;
+  carousel.style.cursor = 'grab';
+});
+
 
 </script>
   
