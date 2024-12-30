@@ -117,66 +117,13 @@
   </section>
     
 <script>
-const carousel = document.querySelector("#carousel");
-const items = document.querySelectorAll(".item");
-let isDragging = false; // Indica si estamos arrastrando
-let startX, currentX; // Posiciones del ratón al iniciar y mover el arrastre
-let scrollPosition = 0; // Para calcular el desplazamiento
-
-// Función para mover el carrusel basado en un índice
-function moveCarousel(index) {
-  const itemWidth = items[0].offsetWidth;
-  const newPosition = -index * itemWidth;
-  carousel.style.transform = `translateX(${newPosition}px)`;
-}
-
-// Manejo de clics en los elementos
-items.forEach((item, index) => {
-  item.addEventListener("click", () => {
-    moveCarousel(index);
+document.querySelectorAll("div.item").forEach((item, index) => {
+    item.addEventListener("click", () => {
+      // Cambiar la posición central
+      document.querySelector("main#carousel").style.setProperty("--position", index + 1);
+    });
   });
-});
-
-// Iniciar el arrastre
-carousel.addEventListener("mousedown", (e) => {
-  isDragging = true;
-  startX = e.clientX; // Posición inicial del ratón
-  carousel.style.cursor = "grabbing"; // Cambia el cursor
-});
-
-// Movimiento durante el arrastre
-carousel.addEventListener("mousemove", (e) => {
-  if (!isDragging) return; // Si no estamos arrastrando, no hacer nada
-
-  currentX = e.clientX; // Posición actual del ratón
-  const diffX = startX - currentX; // Diferencia de movimiento en el eje X
-
-  // Actualiza la posición del carrusel
-  carousel.style.transform = `translateX(${scrollPosition - diffX}px)`;
-});
-
-// Finalizar el arrastre
-carousel.addEventListener("mouseup", () => {
-  isDragging = false;
-  carousel.style.cursor = "grab"; // Vuelve al cursor normal
-
-  const itemWidth = items[0].offsetWidth;
-  const movedItems = Math.round((scrollPosition - (startX - currentX)) / itemWidth); // Calcula cuántos items se movieron
-
-  // Determina el índice final y mueve el carrusel
-  const newIndex = Math.max(0, Math.min(items.length - 1, Math.round(scrollPosition / itemWidth) + movedItems));
-  moveCarousel(newIndex);
-
-  // Actualiza la posición actual
-  scrollPosition = -newIndex * itemWidth;
-});
-
-// Finaliza el arrastre si el mouse se va fuera
-carousel.addEventListener("mouseleave", () => {
-  isDragging = false;
-  carousel.style.cursor = "grab";
-});
-
+  
 </script>
   
 </body>

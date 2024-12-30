@@ -153,6 +153,7 @@ body {
 /* Diseño responsive */
 @media (max-width: 768px) {
     .container {
+        height: 100vh;
         grid-template-columns: 1fr;
         /* Una sola columna */
         grid-template-rows: auto;
@@ -161,7 +162,17 @@ body {
 
     .box1,
     .box2,
-    .box3 
+    .box3 {
+        grid-column: 1 / 2;
+        /* Cada div ocupa toda la columna */
+        grid-row: auto;
+        /* Las filas se ajustan automáticamente */
+    }
+
+    .box3 {
+        grid-row: 3;
+        /* El tercer div queda debajo de los otros dos */
+    }
     
 }
 /* .segunda {
