@@ -1,0 +1,297 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root {
+    --primary-color: background-color:#fff(0, 0, 0, 0.47);
+    --secondary-color:  #1613134d;;
+    /* Verde */
+    --sobras-color: #000000a2;
+    --sobras2-color: #ffffffa2;
+    --sobras3-color: #000000c7;
+    
+}
+
+
+/* Definición de la animación */
+@keyframes moverFondo {
+    0% {
+        background-size: 100%; /* Imagen al tamaño normal */
+    }
+    50% {
+        background-size: 110%; /* Imagen ligeramente agrandada */
+    }
+    100% {
+        background-size: 100%; /* Imagen vuelve a su tamaño original */
+    }
+}
+
+.logo {
+    width: 35%;
+    padding: 5px;
+}
+
+/* Fijar el navbar */
+.navbar {
+  width: 100%; /* Asegura que ocupe todo el ancho */
+  background-color: rgba(122, 122, 118, 0); /* Fondo transparente con opacidad */
+  font-weight: 600; /* Aumenta el grosor de las letras */
+  z-index: 1000; /* Lo coloca sobre el contenido */
+}
+
+/* Asegurar que el contenido no se desplace cuando se abre el menú */
+.p1 {
+  background-image: url('img2.webp'); /* Imagen de fondo */
+  background-image: 
+          linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%), /* Degradado desde arriba hacia abajo */
+          url('img2.webp'); /* Imagen de fondo */
+  background-position: center; /* Centra la imagen */
+  width: 100%;
+  height: 100vh;
+  animation: moverFondo 10s; /* Animación que se repite infinitamente */
+  object-fit: cover; /* Asegura que la imagen cubra el área sin salirse */
+}
+
+/* Estilo de los enlaces */
+.navbar .navbar-nav .nav-link {
+  color: #ffffff !important; /* Letras blancas luminosas */
+  font-weight: 600; /* Aumenta el grosor de las letras */
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.6), 0 0 30px rgba(255, 255, 255, 0.4); /* Efecto de resplandor */
+}
+
+.navbar .navbar-nav .nav-link:hover {
+  color: #f8f9fa !important; /* Blanco luminoso al pasar el cursor */
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.9), 0 0 30px rgba(255, 255, 255, 0.7), 0 0 40px rgba(255, 255, 255, 0.5); /* Resplandor más intenso al hacer hover */
+}
+
+
+
+.s1{
+    background-color: #534f4f;
+    color: #fff;
+    border-radius: 0px 50% 50% 0%;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 5px 10px 0px var(--sobras-color);
+}
+.contenido1{
+  height: 90%;
+
+  display: grid;
+  grid-template-rows: 80% 20%;
+}
+.h1letra {
+  display: flex;                /* Activamos Flexbox */
+  align-items: center;          /* Centra el contenido verticalmente */
+  justify-content: center;      /* Centra el contenido horizontalmente */
+  font-family: "Trirong", serif;
+  font-weight: 100;
+  font-style: normal;
+  color: #ffffff;
+  height: 100vh;                /* Hace que el contenedor ocupe toda la altura de la ventana */
+  text-align: center;           /* Asegura que el texto esté alineado al centro */
+}
+
+.h1letra2 {
+  background-color: red;
+  font-size: 27px;
+  color: black;
+  font-weight: 900; /* Peso de fuente más fuerte */
+  text-decoration: underline; /* Subraya el texto */
+  text-decoration-color: red; /* Establece el color de la línea de subrayado a rojo */
+  
+  align-items: center;
+  justify-content: center;
+}
+.p2 {
+  background: linear-gradient(to top, #7a7a76, #4d4d47);
+  width: 100%;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 40% 60%;
+}
+
+h1{
+    
+    animation: tracking-in-expand-forward-top 0.9s linear both;
+    animation-range: entry 25% cover 50%;
+    animation-range: entry 25% cover 50%;
+}
+
+.s2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.carousel{
+    width: 500px;
+    height: 500px;
+    align-items: center;
+    justify-items: center;
+    box-shadow: 5px 5px 10px var(--sobras-color);
+    border-radius: 7%;
+    overflow: hidden; /* Asegura que no haya desbordes de contenido */
+    view-timeline-name: --reveal;
+    animation-name: show;
+    animation-fill-mode: both;
+    animation-timeline: --reveal;
+    animation-range: entry 25% cover 50%;
+    animation-range: entry 25% cover 50%;
+}
+
+.p3 {
+    background-image: url('img15.jpg'), linear-gradient(to top, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%); /* Imagen y degradado */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    height: 100vh;
+    width: 100%;
+    margin: 0;
+    display: flex;
+    background-color: #4b3939;
+    grid-template-rows: 500px 100px;
+    grid-template-columns: 1fr 30px 30px 30px 30px 30px 1fr;
+    align-items: center;
+    justify-items: center;
+}
+
+@keyframes show{
+    from{
+        opacity: 0; scale: 10%;
+    }
+    to{
+        opacity: 1; scale: 100%;
+    }
+}
+@keyframes tracking-in-expand-forward-top {
+    0% {
+      letter-spacing: -0.2em;
+      transform: translateZ(-700px) translateY(-100px);
+      opacity: 0;
+    }
+    40% {
+      opacity: 0.6;
+    }
+    100% {
+      transform: translateZ(0) translateY(0);
+      opacity: 1;
+    }
+  }
+main#carousel {
+    grid-row: 1 / 2;
+    grid-column: 1 / 8;
+    width: 100vw;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transform-style: preserve-3d;
+    perspective: 600px;
+    --items: 5;
+    --middle: 3;
+    --position: 3;
+    view-timeline-name: --reveal;
+    animation-name: show;
+    animation-fill-mode: both;
+    animation-timeline: --reveal;
+    animation-range: entry 25% cover 50%;
+    animation-range: entry 25% cover 50%;
+    border-radius: 50px;
+  }
+
+div.item {
+    position: absolute;
+    width: 300px;
+    height: 400px;
+    transition: filter 0.3s ease-in-out;
+    cursor: pointer;
+    box-shadow: 20px 20px 25px var(--sobras3-color);
+    view-timeline-name: --reveal;
+    animation-name: show;
+    animation-fill-mode: both;
+    animation-timeline: --reveal;
+    animation-range: entry 25% cover 50%;
+    border-radius: 25px;
+    overflow: hidden;
+    --r: calc(var(--position) - var(--offset));
+    --abs: max(calc(var(--r) * -1), var(--r));
+    transition: all 0.25s linear;
+    transform: rotateY(calc(-10deg * var(--r))) translateX(calc(-300px * var(--r)));
+    z-index: calc((var(--position) - var(--abs)));
+  }
+  
+.text-overlay {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 25%; /* Ocupa el 25% inferior */
+    background: rgba(0, 0, 0, 0.5); /* Fondo negro con opacidad */
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: bold;
+  }
+  
+  .text-overlay p {
+    margin: 0;
+    padding: 0;
+  }
+div.nav-item:hover{
+    scale: 1.32;
+    filter: brightness(100%);
+  }
+div.item:nth-of-type(1) {
+    --offset: 1;
+  }
+div.item:nth-of-type(2) {
+    --offset: 2;
+  }
+div.item:nth-of-type(3) {
+    --offset: 3;
+  }
+div.item:nth-of-type(4) {
+    --offset: 4;
+  }
+div.item:nth-of-type(5) {
+    --offset: 5;
+  }
+  
+
+
+.p4{
+        width: 100%;
+        position: relative;
+        height: 100vh; /* Ocupa toda la altura de la pantalla */
+        background-image: 
+            linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%), /* Degradado desde arriba hacia abajo */
+            url('img2.webp'); /* Imagen de fondo */
+        background-size: cover; /* La imagen cubre todo el contenedor */
+        background-position: center; /* Centra la imagen */
+        font-size: 14px;
+        display: grid;
+        grid-template-rows: 65% 35%;
+}
+@media (max-width: 768px) {
+    .p2 {
+        display: grid;
+        grid-template-columns: 100%;
+        grid-template-rows: 20% 80%;
+    }
+    .s1{
+        background-color: #534f4f;
+        border-radius: 0px 0% 50% 50%;
+        align-items: center;
+        text-align: center;
+        color: #fff;
+        box-shadow: 0px 5px 10px 0px var(--sobras-color);
+    }
+    .carousel{
+        width: 350px;
+        height: 350px;
+    }
+}
