@@ -117,6 +117,9 @@ h1{
     animation: tracking-in-expand-forward-top 0.9s linear both;
     animation-range: entry 25% cover 50%;
     animation-range: entry 25% cover 50%;
+    display: flex;                /* Activamos Flexbox */
+  align-items: center;          /* Centra el contenido verticalmente */
+  justify-content: center;
 }
 
 .s2{
@@ -293,5 +296,11 @@ div.item:nth-of-type(5) {
     .carousel{
         width: 350px;
         height: 350px;
+    }
+    .h1letra{
+      font-size: 25px;
+    }
+    .h1letra2{
+      font-size: 14px;
     }
 }
